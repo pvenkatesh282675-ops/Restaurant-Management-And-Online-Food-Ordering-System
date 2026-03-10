@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="title">🛒 Your Cart</h2>
+
+{% if cart and cart.items.all %}
+
+<div class="cart-container">
+
+{% for item in cart.items.all %}
+
+<div class="cart-card">
+
+<div class="cart-food">
+
+<div class="cart-info">
+<h3>{{ item.food.name }}</h3>
+<p class="cart-price">₹{{ item.food.price }}</p>
+</div>
+
+<div class="cart-actions">
+
+<a href="{% url 'decrease_quantity' item.id %}" class="qty-btn">−</a>
+
+<span class="qty">{{ item.quantity }}</span>
+
+<a href="{% url 'add_to_cart' item.food.id %}" class="qty-btn">+</a>
+
+<a href="{% url 'remove_item' item.id %}" class="remove-btn">✕</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<div class="cart-summary">
+
+<h3>Total ₹{{ total }}</h3>
+
+<a href="{% url 'checkout' %}" class="checkout-btn">
+Proceed to Checkout
+</a>
+
+</div>
+
+{% else %}
+
+<div class="empty-cart">
+<h3>Your cart is empty 😔</h3>
+<a href="{% url 'menu' %}" class="btn">Browse Menu</a>
+</div>
+
+{% endif %}
+
+<<<<<<< HEAD
+{% endblock %}
+=======
+{% endblock %}
+>>>>>>> 658752f (Added new files and updates)

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="title">Manage Orders</h2>
+
+{% for order in orders %}
+<div class="order-manage">
+  <div>
+    <b>Order #{{ order.id }}</b>
+    <p>User: {{ order.user.username }}</p>
+    <p>Total: ₹{{ order.total_price }}</p>
+    <p>Status: <b>{{ order.status }}</b></p>
+  </div>
+
+  <form method="post" action="{% url 'update_status' order.id %}">
+    {% csrf_token %}
+    <select name="status">
+      {% for key,val in order.STATUS_CHOICES %}
+        <option value="{{ key }}" {% if order.status == key %}selected{% endif %}>{{ val }}</option>
+      {% endfor %}
+    </select>
+    <button class="btn" type="submit">Update</button>
+  </form>
+</div>
+{% endfor %}
+
+<style>
+.order-manage {
+  background:white;
+  padding:20px;
+  border-radius:14px;
+  margin-bottom:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+}
+
+select {
+  padding:8px;
+  border-radius:6px;
+  border:1px solid #ddd;
+}
+</style>
+
+{% endblock %}

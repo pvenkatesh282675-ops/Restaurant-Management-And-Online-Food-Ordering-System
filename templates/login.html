@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="login-center">
+
+  <div class="auth-box">
+    <h2 class="brand">🍽 eDineIn</h2>
+    <p class="tagline">Sign in to continue</p>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <input type="text" name="username" placeholder="Username" required>
+
+      <input type="password" name="password" placeholder="Password" required>
+
+      <a href="{% url 'forget_password' %}">Forgot password?</a>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p>
+      Don't have an account?
+      <a href="{% url 'register' %}">Register</a>
+    </p>
+
+  </div>
+
+</div>
+
+<<<<<<< HEAD
+{% endblock %}
+=======
+{% endblock %}
+>>>>>>> 658752f (Added new files and updates)

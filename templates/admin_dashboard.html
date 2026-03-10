@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="title">Admin Dashboard</h2>
+
+<div class="dashboard-grid">
+  <div class="stat-card">
+    <h4>Total Orders</h4>
+    <h2>{{ total_orders }}</h2>
+  </div>
+  <div class="stat-card">
+    <h4>Delivered</h4>
+    <h2>{{ delivered_orders }}</h2>
+  </div>
+  <div class="stat-card">
+    <h4>Pending</h4>
+    <h2>{{ pending_orders }}</h2>
+  </div>
+  <div class="stat-card">
+    <h4>Revenue</h4>
+    <h2>₹{{ total_revenue }}</h2>
+  </div>
+</div>
+
+<br>
+<a class="btn" href="{% url 'manage_orders' %}">Manage Orders</a>
+
+{% endblock %}

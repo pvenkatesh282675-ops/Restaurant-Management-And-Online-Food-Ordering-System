@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="menu-hero">
+  <div class="menu-hero-overlay">
+    <div class="menu-hero-text">
+      <h1>Explore Our Menu</h1>
+      <p>Freshly prepared dishes from our kitchen</p>
+    </div>
+  </div>
+</div>
+<div class="menu-container">
+
+{% for category in categories %}
+
+<div class="category-section">
+
+<h2 class="category-title">
+🍽 {{ category.name }}
+</h2>
+
+<div class="food-grid">
+
+{% for food in category.foods.all %}
+
+<div class="food-card">
+
+<div class="food-img-box">
+{% if food.image %}
+<img src="{{ food.image.url }}">
+{% else %}
+<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c">
+{% endif %}
+</div>
+
+<div class="food-info">
+
+<h4>{{ food.name }}</h4>
+
+<p class="desc">
+{{ food.description|truncatechars:60 }}
+</p>
+
+<div class="food-bottom">
+
+<span class="price">₹{{ food.price }}</span>
+
+<a href="{% url 'add_to_cart' food.id %}" class="add-btn">Add</a>
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
+{% endfor %}
+</div>
+<a href="{% url 'view_cart' %}" class="floating-cart">🛒</a>
+
+<<<<<<< HEAD
+{% endblock %}
+=======
+{% endblock %}
+>>>>>>> 658752f (Added new files and updates)
